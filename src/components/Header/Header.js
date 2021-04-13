@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import TimeAgo from 'react-timeago'
 
 const authenticatedOptions = (
   <Fragment>
@@ -27,6 +28,7 @@ const Header = ({ user }) => (
     <Navbar.Brand href="#">
       react-auth-template
     </Navbar.Brand>
+    <TimeAgo date="Aug 29, 2014" />
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
