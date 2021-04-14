@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import Nav from 'react-bootstrap/Nav'
 
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
@@ -11,6 +12,9 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
 import JournalCreate from './components/JournalRoutes/CreateJournal'
+import JournalShow from './components/JournalRoutes/ShowJournal'
+import JournalIndex from './components/JournalRoutes/IndexJournal'
+import JournalUpdate from './components/JournalRoutes/UpdateJournal'
 
 class App extends Component {
   constructor (props) {
@@ -67,9 +71,24 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/journal' render={() => (
+          <AuthenticatedRoute user={user} exact path='/journal-create' render={() => (
             <JournalCreate msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/journal' render={() => (
+            <JournalIndex msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/journal/:id' render={() => (
+            <JournalShow msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <Nav.Link href="#journal-create">Create a journal entry</Nav.Link>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <Nav.Link href="#journal">View Journals</Nav.Link>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/journal/:id/edit' render={() => (
+            <JournalUpdate msgAlert={this.msgAlert} user={user} />
+          )}/>
         </main>
       </Fragment>
     )

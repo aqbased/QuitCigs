@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import JournalForm from '../JournalForm/JournalForm'
 import { journalCreate } from '../../api/journal_api'
 
@@ -29,7 +29,7 @@ class JournalCreate extends Component {
     const { user, msgAlert } = this.props
     const { journal } = this.state
     journalCreate(journal, user)
-      .then(res => this.setState({ createdJournalId: res.data._id }))
+      .then(res => this.setState({ createdJournalId: res.data.journalEntry._id }))
       .then(() => msgAlert({
         heading: 'Created journal entry successfully.',
         message: 'Showing created entry',
@@ -44,10 +44,10 @@ class JournalCreate extends Component {
       })
   }
   render () {
-    const { journal } = this.state
-    // if (createdJournalId) {
-    //   return <Redirect to={`/journal/${createdJournalId}`} />
-    // }
+    const { journal, createdJournalId } = this.state
+    if (createdJournalId) {
+      return <Redirect to={`/journal/${createdJournalId}`} />
+    }
     return (
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
