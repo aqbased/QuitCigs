@@ -66,7 +66,6 @@ class JournalShow extends Component {
           <h3>this is cravings: {journal.cravings}</h3>
           <button><Link to={'/journal/' + this.props.match.params.id + '/edit/'}>Update Entry</Link></button>
           <button onClick={this.deleteJournal}><Link to={'/'}>Delete</Link></button>
-          <p>wtfhello</p>
         </Fragment>
       )
     }

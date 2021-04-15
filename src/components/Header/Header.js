@@ -27,9 +27,9 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      QuitCigs
+      QuitCigs<i className="fas fa-feather-alt" />
     </Navbar.Brand>
-    <TimeAgo date="Aug 29, 2014" />
+    <h5>You last smoked ~<TimeAgo date="Aug 29, 2014" />!  Keep it up!</h5>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">

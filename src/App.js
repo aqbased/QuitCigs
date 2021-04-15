@@ -16,6 +16,9 @@ import JournalShow from './components/JournalRoutes/ShowJournal'
 import JournalIndex from './components/JournalRoutes/IndexJournal'
 import JournalUpdate from './components/JournalRoutes/UpdateJournal'
 
+import HeroSection from './components/HeroSection.js'
+import Cards from './components/Cards.js'
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -89,6 +92,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/journal/:id/edit' render={() => (
             <JournalUpdate msgAlert={this.msgAlert} user={user} />
           )}/>
+          <HeroSection />
+          <Cards />
         </main>
       </Fragment>
     )
