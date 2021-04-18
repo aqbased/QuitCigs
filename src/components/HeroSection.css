@@ -1,6 +1,6 @@
 .hero-container {
   background: url('https://i.imgur.com/QIecS5S.jpg') center center/cover;
-  height: 80vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@
 }
 
 .hero-container > p {
-  margin-top: 8px;
-  color: #fff;
-  font-size: 32px;
-  font-family: 'Trecbuchet MS', 'Lucida Sans Unicode';
+  margin-top: 8px !important;
+  color: #fff !important;
+  font-size: 32px !important;
+  font-family: 'Trecbuchet MS', 'Lucida Sans Unicode' !important;
 }
 
 

@@ -46,7 +46,7 @@ class JournalCreate extends Component {
   render () {
     const { journal, createdJournalId } = this.state
     if (createdJournalId) {
-      return <Redirect to={`/journal/${createdJournalId}`} />
+      return <Redirect to={'/'} />
     }
     return (
       <div className='row'>

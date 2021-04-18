@@ -15,9 +15,11 @@ import JournalCreate from './components/JournalRoutes/CreateJournal'
 import JournalShow from './components/JournalRoutes/ShowJournal'
 import JournalIndex from './components/JournalRoutes/IndexJournal'
 import JournalUpdate from './components/JournalRoutes/UpdateJournal'
+import MostRecentSmoked from './components/JournalRoutes/MostRecentSmoked'
 
 import HeroSection from './components/HeroSection.js'
 import Cards from './components/Cards.js'
+import Footer from './components/Footer.js'
 
 class App extends Component {
   constructor (props) {
@@ -61,7 +63,7 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-        <main className="container">
+        <main className="content-wrap">
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -74,6 +76,16 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <HeroSection user={user} />
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <MostRecentSmoked msgAlert={this.msgAlert} user={user} />
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <Nav.Link href="#journal-create">Create a journal entry</Nav.Link>
+          )} />
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <Nav.Link href="#journal">View Journals</Nav.Link>
+          )} />
           <AuthenticatedRoute user={user} exact path='/journal-create' render={() => (
             <JournalCreate msgAlert={this.msgAlert} user={user} />
           )} />
@@ -83,17 +95,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/journal/:id' render={() => (
             <JournalShow msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/' render={() => (
-            <Nav.Link href="#journal-create">Create a journal entry</Nav.Link>
-          )} />
-          <AuthenticatedRoute user={user} exact path='/' render={() => (
-            <Nav.Link href="#journal">View Journals</Nav.Link>
-          )} />
           <AuthenticatedRoute user={user} exact path='/journal/:id/edit' render={() => (
             <JournalUpdate msgAlert={this.msgAlert} user={user} />
           )}/>
-          <HeroSection />
-          <Cards />
+          <Cards user={user} msgAlert={this.msgAlert}/>
+          <Footer />
         </main>
       </Fragment>
     )

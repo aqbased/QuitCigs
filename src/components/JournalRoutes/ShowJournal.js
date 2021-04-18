@@ -59,6 +59,7 @@ class JournalShow extends Component {
         </Spinner>
       )
     } else if (journal) {
+      console.log(journal)
       journalJsx = (
         <Fragment>
           <h3>this is notes: {journal.notes}</h3>

@@ -1,6 +1,16 @@
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 
+export const mostRecentSmoked = (user) => {
+  return axios({
+    url: apiUrl + '/most-recent-smoked',
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+  })
+}
+
 export const journalCreate = (journal, user) => {
   console.log(journal)
   return axios({
