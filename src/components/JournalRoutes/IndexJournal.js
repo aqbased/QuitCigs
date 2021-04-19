@@ -47,7 +47,7 @@ class JournalIndex extends Component {
     ))
     return (
       <div>
-        <h2>Your journal entries go below here.  If you see nothing below, go create a new entry!</h2>
+        <h2>Your Journal Log: </h2>
         {journalJsx}
       </div>
     )
