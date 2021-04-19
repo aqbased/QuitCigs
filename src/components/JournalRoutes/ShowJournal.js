@@ -61,9 +61,9 @@ class JournalShow extends Component {
     } else if (journal) {
       journalJsx = (
         <Fragment>
-          <h3>this is notes: {journal.notes}</h3>
-          <h3>this is desirescale: {journal.desireScale}</h3>
-          <h3>this is cravings: {journal.cravings}</h3>
+          <h3>Your notes for this entry: {journal.notes}</h3>
+          <h3>Your desire to smoke for this entry: {journal.desireScale}</h3>
+          <h3>The cravings you faced during this entry: {journal.cravings}</h3>
           <button><Link to={'/journal/' + this.props.match.params.id + '/edit/'}>Update Entry</Link></button>
           <button onClick={this.deleteJournal}><Link to={'/'}>Delete</Link></button>
         </Fragment>
