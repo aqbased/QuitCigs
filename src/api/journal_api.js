@@ -12,7 +12,6 @@ export const mostRecentSmoked = (user) => {
 }
 
 export const journalCreate = (journal, user) => {
-  console.log(journal)
   return axios({
     url: apiUrl + '/journal',
     method: 'POST',
@@ -23,7 +22,6 @@ export const journalCreate = (journal, user) => {
   })
 }
 export const journalShow = (id, user) => {
-  console.log('made it to journalShow and here are id and user' + id + user)
   return axios({
     url: apiUrl + '/journal/' + id,
     method: 'GET',

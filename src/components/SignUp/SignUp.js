@@ -91,7 +91,7 @@ class SignUp extends Component {
               variant="primary"
               type="submit"
             >
-              Submit
+              If you are ready to quit smoking, click here
             </Button>
           </Form>
         </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { journalIndex } from '../../api/journal_api'
-import Spinner from 'react-bootstrap/Spinner'
 
 class JournalIndex extends Component {
   constructor (props) {
@@ -13,10 +12,6 @@ class JournalIndex extends Component {
   componentDidMount () {
     const { msgAlert, user } = this.props
     journalIndex(user)
-      .then(res => {
-        console.log('this is res.data: ', res.data)
-        return res
-      })
       .then(res => this.setState({ journals: res.data }))
       .then(() => msgAlert({
         heading: 'Loaded Journal Entry!',
@@ -33,14 +28,11 @@ class JournalIndex extends Component {
   }
   render () {
     const { journals } = this.state
-    if (!journals) {
+    if (journals.length === 0) {
       return (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">loading...</span>
-        </Spinner>
+        <h2>You have no journal entries, go create one to view it here.</h2>
       )
     }
-    console.log('this is journals: ', journals)
     const journalJsx = journals.map(journal => (
       <div className="card" key={journal._id}>
         <Link to={`/journal/${journal._id}`} key={journal._id}>
@@ -55,6 +47,7 @@ class JournalIndex extends Component {
     ))
     return (
       <div>
+        <h2>Your journal entries go below here.  If you see nothing below, go create a new entry!</h2>
         {journalJsx}
       </div>
     )
